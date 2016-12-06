@@ -98,7 +98,6 @@
       "text": "ブラウザからさくらのクラウドAPIを実行できるクライアント「sacloud-api-tester」",
       "url": "http://kuroeveryday.blogspot.com/2016/12/sacloud-api-tester.html"
     },
-  "products": [
     {
       "date": "2016/04/17",
       "text": "Slack上からさくらのクラウドを操作できるbot「sacloud-bot」",

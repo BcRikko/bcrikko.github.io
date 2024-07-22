@@ -1,14 +1,179 @@
-<!DOCTYPE html><html lang="ja" data-astro-cid-sckkx6r4> <head><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-1276308583388146"><meta name="author" content="ダーシノ(B.C.Rikko)"><meta name="description" content="system-colorはユーザーエージェントが提供しているカラーパレットで、Windowのハイコントラストモードにすると強制色モードが有効になりsystem-colorが変わる。"><meta name="keywords" content="CSS"><meta name="generator" content="Astro"><meta name="theme-color" content="#fafafa"><meta name="color-scheme" content="only light"><meta property="og:type" content="article"><meta property="og:title" content="system-colorを知る | ダーシノ(B.C.Rikko)"><meta property="og:description" content="system-colorはユーザーエージェントが提供しているカラーパレットで、Windowのハイコントラストモードにすると強制色モードが有効になりsystem-colorが変わる。"><meta property="og:image" content="https://bcrikko.github.io/bcrikko.png"><meta property="og:url" content="https://bcrikko.github.io/posts/2024-03-29/system-color/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"><title>system-colorを知る</title><style>.tags[data-astro-cid-3ef6ksr2]{font-size:.8rem;display:flex;flex-wrap:wrap;gap:2em;>div{display:flex;gap:.5em}dt:after{content:":"}dd{margin:0}}
-html{font-family:Noto Sans JP,sans-serif;font-size:1.25rem;line-height:1.7;letter-spacing:.05em;color:#333;background-color:#fafafa}:where(header,footer,main){max-width:40ic;margin-inline:auto}p{word-break:auto-phrase}dt{font-weight:800}pre{padding:1em;font-size:.8rem;line-height:1.4}code{font-style:italic;padding:0 .2em;background-color:#eee}pre>code{font-family:Menlo,Monaco,Courier New,monospace;font-style:initial;padding:initial;background-color:initial}blockquote{margin:2em 0;padding:.2em 1em;border-left:8px solid #CACACA;background-color:#eee}a{word-break:break-word}table{width:100%;overflow-x:auto}tr:nth-child(2n){background-color:#eee}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:space-between}footer[data-astro-cid-sckkx6r4]{text-align:center}
-</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <a href="" data-astro-cid-sckkx6r4>≪ Today I learned.</a> <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
-RSS購読
-</a> </header> <main data-astro-cid-sckkx6r4> <hgroup data-astro-cid-3ef6ksr2> <dl class="tags" data-astro-cid-3ef6ksr2> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>公開日</dt> <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-03-29</time></dd> </div>  <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>タグ</dt> <dd data-astro-cid-3ef6ksr2>CSS</dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>著者</dt> <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
-ダーシノ(@bc_rikko)
-</a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a></div><a data-astro-cid-3ef6ksr2></a></dl><a data-astro-cid-3ef6ksr2> <h1 data-astro-cid-3ef6ksr2>system-colorを知る</h1> </a></hgroup> 
-<p><a href="https://developer.mozilla.org/ja/docs/Web/CSS/system-color">system-color</a>はユーザーエージェントが提供しているカラーパレットで、<a href="https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/">Windowのハイコントラストモード</a>にすると強制色モードが有効になりsystem-colorが変わる。</p>
-<p>基本的に開発者が<code>system-color</code>を上書きできるわけではないので知識として知っておくだけで使う場面はなさそう。</p>
-<h2 id="サンプル">サンプル</h2>
-<section><p style="color: AccentColor;">AccentColor</p><p style="color: AccentColorText;">AccentColorText</p><p style="color: ActiveText;">ActiveText</p><p style="color: ButtonBorder;">ButtonBorder</p><p style="color: ButtonFace;">ButtonFace</p><p style="color: ButtonText;">ButtonText</p><p style="color: Canvas;">Canvas</p><p style="color: CanvasText;">CanvasText</p><p style="color: Field;">Field</p><p style="color: FieldText;">FieldText</p><p style="color: GrayText;">GrayText</p><p style="color: Hightlight;">Hightlight</p><p style="color: HightlightText;">HightlightText</p><p style="color: LinkText;">LinkText</p><p style="color: Mark;">Mark</p><p style="color: MarkText;">MarkText</p><p style="color: VisitedText;">VisitedText</p></section> </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
-Copyright © 2024  <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
-ダーシノ(@bc_rikko)
-</a> </small> </p> </footer> </body></html>
+<!DOCTYPE html>
+<html lang="ja" data-astro-cid-sckkx6r4>
+
+<head>
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-adsense-account" content="ca-pub-1276308583388146">
+  <meta name="author" content="ダーシノ(B.C.Rikko)">
+  <meta name="description"
+    content="system-colorはユーザーエージェントが提供しているカラーパレットで、Windowのハイコントラストモードにすると強制色モードが有効になりsystem-colorが変わる。">
+  <meta name="keywords" content="CSS">
+  <meta name="generator" content="Astro">
+  <meta name="theme-color" content="#fafafa">
+  <meta name="color-scheme" content="only light">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="system-colorを知る | ダーシノ(B.C.Rikko)">
+  <meta property="og:description"
+    content="system-colorはユーザーエージェントが提供しているカラーパレットで、Windowのハイコントラストモードにすると強制色モードが有効になりsystem-colorが変わる。">
+  <meta property="og:image" content="https://bcrikko.github.io/bcrikko.png">
+  <meta property="og:url" content="https://bcrikko.github.io/posts/2024-03-29/system-color/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <title>system-colorを知る</title>
+  <style>
+    .tags[data-astro-cid-3ef6ksr2] {
+      font-size: .8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+
+      >div {
+        display: flex;
+        gap: .5em
+      }
+
+      dt:after {
+        content: ":"
+      }
+
+      dd {
+        margin: 0
+      }
+    }
+
+    html {
+      font-family: Noto Sans JP, sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      letter-spacing: .05em;
+      color: #333;
+      background-color: #fafafa
+    }
+
+    :where(header, footer, main) {
+      max-width: 40ic;
+      margin-inline: auto
+    }
+
+    p {
+      word-break: auto-phrase
+    }
+
+    dt {
+      font-weight: 800
+    }
+
+    pre {
+      padding: 1em;
+      font-size: .8rem;
+      line-height: 1.4
+    }
+
+    code {
+      font-style: italic;
+      padding: 0 .2em;
+      background-color: #eee
+    }
+
+    pre>code {
+      font-family: Menlo, Monaco, Courier New, monospace;
+      font-style: initial;
+      padding: initial;
+      background-color: initial
+    }
+
+    blockquote {
+      margin: 2em 0;
+      padding: .2em 1em;
+      border-left: 8px solid #CACACA;
+      background-color: #eee
+    }
+
+    a {
+      word-break: break-word
+    }
+
+    table {
+      width: 100%;
+      overflow-x: auto
+    }
+
+    tr:nth-child(2n) {
+      background-color: #eee
+    }
+
+    header[data-astro-cid-sckkx6r4] {
+      display: flex;
+      justify-content: space-between
+    }
+
+    footer[data-astro-cid-sckkx6r4] {
+      text-align: center
+    }
+  </style>
+</head>
+
+<body data-astro-cid-sckkx6r4>
+  <header data-astro-cid-sckkx6r4> <a href="https://bcrikko.github.io/" data-astro-cid-sckkx6r4>≪ Today I learned.</a>
+    <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
+      RSS購読
+    </a> </header>
+  <main data-astro-cid-sckkx6r4>
+    <hgroup data-astro-cid-3ef6ksr2>
+      <dl class="tags" data-astro-cid-3ef6ksr2>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>公開日</dt>
+          <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-03-29</time></dd>
+        </div>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>タグ</dt>
+          <dd data-astro-cid-3ef6ksr2>CSS</dd>
+        </div>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>著者</dt>
+          <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
+              ダーシノ(@bc_rikko)
+            </a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a>
+        </div><a data-astro-cid-3ef6ksr2></a>
+      </dl><a data-astro-cid-3ef6ksr2>
+        <h1 data-astro-cid-3ef6ksr2>system-colorを知る</h1>
+      </a>
+    </hgroup>
+    <p><a
+        href="https://developer.mozilla.org/ja/docs/Web/CSS/system-color">system-color</a>はユーザーエージェントが提供しているカラーパレットで、<a
+        href="https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/">Windowのハイコントラストモード</a>にすると強制色モードが有効になりsystem-colorが変わる。
+    </p>
+    <p>基本的に開発者が<code>system-color</code>を上書きできるわけではないので知識として知っておくだけで使う場面はなさそう。</p>
+    <h2 id="サンプル">サンプル</h2>
+    <section>
+      <p style="color: AccentColor;">AccentColor</p>
+      <p style="color: AccentColorText;">AccentColorText</p>
+      <p style="color: ActiveText;">ActiveText</p>
+      <p style="color: ButtonBorder;">ButtonBorder</p>
+      <p style="color: ButtonFace;">ButtonFace</p>
+      <p style="color: ButtonText;">ButtonText</p>
+      <p style="color: Canvas;">Canvas</p>
+      <p style="color: CanvasText;">CanvasText</p>
+      <p style="color: Field;">Field</p>
+      <p style="color: FieldText;">FieldText</p>
+      <p style="color: GrayText;">GrayText</p>
+      <p style="color: Hightlight;">Hightlight</p>
+      <p style="color: HightlightText;">HightlightText</p>
+      <p style="color: LinkText;">LinkText</p>
+      <p style="color: Mark;">Mark</p>
+      <p style="color: MarkText;">MarkText</p>
+      <p style="color: VisitedText;">VisitedText</p>
+    </section>
+  </main>
+  <footer data-astro-cid-sckkx6r4>
+    <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
+        Copyright © 2024 <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
+          ダーシノ(@bc_rikko)
+        </a> </small> </p>
+  </footer>
+</body>
+
+</html>

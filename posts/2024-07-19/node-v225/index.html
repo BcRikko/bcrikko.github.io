@@ -1,21 +1,162 @@
-<!DOCTYPE html><html lang="ja" data-astro-cid-sckkx6r4> <head><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-1276308583388146"><meta name="author" content="ダーシノ(B.C.Rikko)"><meta name="description" content="Node.js v22.5がリリースされた。"><meta name="keywords" content="Node.js,JavaScript"><meta name="generator" content="Astro"><meta name="theme-color" content="#fafafa"><meta name="color-scheme" content="only light"><meta property="og:type" content="article"><meta property="og:title" content="Node.js v22.5がリリースされた | ダーシノ(B.C.Rikko)"><meta property="og:description" content="Node.js v22.5がリリースされた。"><meta property="og:image" content="https://bcrikko.github.io/bcrikko.png"><meta property="og:url" content="https://bcrikko.github.io/posts/2024-07-19/node-v225/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"><title>Node.js v22.5がリリースされた</title><style>.tags[data-astro-cid-3ef6ksr2]{font-size:.8rem;display:flex;flex-wrap:wrap;gap:2em;>div{display:flex;gap:.5em}dt:after{content:":"}dd{margin:0}}
-html{font-family:Noto Sans JP,sans-serif;font-size:1.25rem;line-height:1.7;letter-spacing:.05em;color:#333;background-color:#fafafa}:where(header,footer,main){max-width:40ic;margin-inline:auto}p{word-break:auto-phrase}dt{font-weight:800}pre{padding:1em;font-size:.8rem;line-height:1.4}code{font-style:italic;padding:0 .2em;background-color:#eee}pre>code{font-family:Menlo,Monaco,Courier New,monospace;font-style:initial;padding:initial;background-color:initial}blockquote{margin:2em 0;padding:.2em 1em;border-left:8px solid #CACACA;background-color:#eee}a{word-break:break-word}table{width:100%;overflow-x:auto}tr:nth-child(2n){background-color:#eee}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:space-between}footer[data-astro-cid-sckkx6r4]{text-align:center}
-</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <a href="" data-astro-cid-sckkx6r4>≪ Today I learned.</a> <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
-RSS購読
-</a> </header> <main data-astro-cid-sckkx6r4> <hgroup data-astro-cid-3ef6ksr2> <dl class="tags" data-astro-cid-3ef6ksr2> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>公開日</dt> <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-07-19</time></dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>更新日</dt> <dd data-astro-cid-3ef6ksr2> <time data-astro-cid-3ef6ksr2>2024-07-20</time> </dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>タグ</dt> <dd data-astro-cid-3ef6ksr2>Node.js, JavaScript</dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>著者</dt> <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
-ダーシノ(@bc_rikko)
-</a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a></div><a data-astro-cid-3ef6ksr2></a></dl><a data-astro-cid-3ef6ksr2> <h1 data-astro-cid-3ef6ksr2>Node.js v22.5がリリースされた</h1> </a></hgroup> 
-<p><a href="https://nodejs.org/en/blog/release/v22.5.0">Node.js v22.5</a>がリリースされた。</p>
-<p>以下、注目の機能。</p>
-<h2 id="ブラウザ互換のwebsocketでフラグが不要に">ブラウザ互換のWebSocketでフラグが不要に</h2>
-<p>Experimentalのフラグが不要になった。</p>
-<blockquote>
-<p>A browser-compatible implementation of WebSocket.
-<a href="https://nodejs.org/api/http.html#websocket">https://nodejs.org/api/http.html#websocket</a></p>
-</blockquote>
-<h2 id="sqlite3が使えるようになった">SQLite3が使えるようになった</h2>
-<p><a href="https://nodejs.org/api/sqlite.html">node:sqlite</a>を公式が提供してくれるので、3rdパーティ製のクライアントが不要になった。</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">DatabaseSync</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;node:sqlite&#39;</span><span style="color:#E1E4E8">);</span></span>
+<!DOCTYPE html>
+<html lang="ja" data-astro-cid-sckkx6r4>
+
+<head>
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-adsense-account" content="ca-pub-1276308583388146">
+  <meta name="author" content="ダーシノ(B.C.Rikko)">
+  <meta name="description" content="Node.js v22.5がリリースされた。">
+  <meta name="keywords" content="Node.js,JavaScript">
+  <meta name="generator" content="Astro">
+  <meta name="theme-color" content="#fafafa">
+  <meta name="color-scheme" content="only light">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Node.js v22.5がリリースされた | ダーシノ(B.C.Rikko)">
+  <meta property="og:description" content="Node.js v22.5がリリースされた。">
+  <meta property="og:image" content="https://bcrikko.github.io/bcrikko.png">
+  <meta property="og:url" content="https://bcrikko.github.io/posts/2024-07-19/node-v225/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <title>Node.js v22.5がリリースされた</title>
+  <style>
+    .tags[data-astro-cid-3ef6ksr2] {
+      font-size: .8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+
+      >div {
+        display: flex;
+        gap: .5em
+      }
+
+      dt:after {
+        content: ":"
+      }
+
+      dd {
+        margin: 0
+      }
+    }
+
+    html {
+      font-family: Noto Sans JP, sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      letter-spacing: .05em;
+      color: #333;
+      background-color: #fafafa
+    }
+
+    :where(header, footer, main) {
+      max-width: 40ic;
+      margin-inline: auto
+    }
+
+    p {
+      word-break: auto-phrase
+    }
+
+    dt {
+      font-weight: 800
+    }
+
+    pre {
+      padding: 1em;
+      font-size: .8rem;
+      line-height: 1.4
+    }
+
+    code {
+      font-style: italic;
+      padding: 0 .2em;
+      background-color: #eee
+    }
+
+    pre>code {
+      font-family: Menlo, Monaco, Courier New, monospace;
+      font-style: initial;
+      padding: initial;
+      background-color: initial
+    }
+
+    blockquote {
+      margin: 2em 0;
+      padding: .2em 1em;
+      border-left: 8px solid #CACACA;
+      background-color: #eee
+    }
+
+    a {
+      word-break: break-word
+    }
+
+    table {
+      width: 100%;
+      overflow-x: auto
+    }
+
+    tr:nth-child(2n) {
+      background-color: #eee
+    }
+
+    header[data-astro-cid-sckkx6r4] {
+      display: flex;
+      justify-content: space-between
+    }
+
+    footer[data-astro-cid-sckkx6r4] {
+      text-align: center
+    }
+  </style>
+</head>
+
+<body data-astro-cid-sckkx6r4>
+  <header data-astro-cid-sckkx6r4> <a href="https://bcrikko.github.io/" data-astro-cid-sckkx6r4>≪ Today I learned.</a>
+    <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
+      RSS購読
+    </a> </header>
+  <main data-astro-cid-sckkx6r4>
+    <hgroup data-astro-cid-3ef6ksr2>
+      <dl class="tags" data-astro-cid-3ef6ksr2>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>公開日</dt>
+          <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-07-19</time></dd>
+        </div>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>更新日</dt>
+          <dd data-astro-cid-3ef6ksr2> <time data-astro-cid-3ef6ksr2>2024-07-20</time> </dd>
+        </div>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>タグ</dt>
+          <dd data-astro-cid-3ef6ksr2>Node.js, JavaScript</dd>
+        </div>
+        <div data-astro-cid-3ef6ksr2>
+          <dt data-astro-cid-3ef6ksr2>著者</dt>
+          <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
+              ダーシノ(@bc_rikko)
+            </a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a>
+        </div><a data-astro-cid-3ef6ksr2></a>
+      </dl><a data-astro-cid-3ef6ksr2>
+        <h1 data-astro-cid-3ef6ksr2>Node.js v22.5がリリースされた</h1>
+      </a>
+    </hgroup>
+    <p><a href="https://nodejs.org/en/blog/release/v22.5.0">Node.js v22.5</a>がリリースされた。</p>
+    <p>以下、注目の機能。</p>
+    <h2 id="ブラウザ互換のwebsocketでフラグが不要に">ブラウザ互換のWebSocketでフラグが不要に</h2>
+    <p>Experimentalのフラグが不要になった。</p>
+    <blockquote>
+      <p>A browser-compatible implementation of WebSocket.
+        <a href="https://nodejs.org/api/http.html#websocket">https://nodejs.org/api/http.html#websocket</a>
+      </p>
+    </blockquote>
+    <h2 id="sqlite3が使えるようになった">SQLite3が使えるようになった</h2>
+    <p><a href="https://nodejs.org/api/sqlite.html">node:sqlite</a>を公式が提供してくれるので、3rdパーティ製のクライアントが不要になった。</p>
+    <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"
+      data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">DatabaseSync</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;node:sqlite&#39;</span><span style="color:#E1E4E8">);</span></span>
 <span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> database</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> DatabaseSync</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;:memory:&#39;</span><span style="color:#E1E4E8">);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">database.</span><span style="color:#B392F0">exec</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`</span></span>
@@ -25,15 +166,35 @@ RSS購読
 <span class="line"><span style="color:#9ECBFF">  ) STRICT</span></span>
 <span class="line"><span style="color:#9ECBFF">`</span><span style="color:#E1E4E8">);</span></span>
 <span class="line"></span></code></pre>
-<h2 id="追記2024-07-19">追記:2024-07-19</h2>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet"><p><p lang="en" dir="ltr">⚠️ We’re encouraging all users to temporarily downgrade to Node.js v22.4.1 due to a bug in v22.5.0.<br/><br/>Full details here: <a href="https://t.co/N0UFoLqoak"><a href="https://t.co/N0UFoLqoak">https://t.co/N0UFoLqoak</a></a>
-</p>— Node.js (@nodejs) <a href="https://twitter.com/nodejs/status/1814112932650701195?ref_src=twsrc%5Etfw">July 19, 2024</a></p></blockquote>
-<p><code>fs.closeSync()</code>の変更によりバグってアプリケーションが動かなくなる可能性が高いため、v22.4 にダウングレードを推奨するとのこと。</p>
-<h2 id="追記2024-07-20">追記:2024-07-20</h2>
-<blockquote class="twitter-tweet"><p><p lang="en" dir="ltr">Node.js 22.5.1 is now released and reverts the commit that caused the regression in 22.5.0. <br/><br/>Details: <a href="https://t.co/CqkVE0RzzW"><a href="https://t.co/CqkVE0RzzW">https://t.co/CqkVE0RzzW</a></a> <a href="https://t.co/KEpFYE4g2O"><a href="https://t.co/KEpFYE4g2O">https://t.co/KEpFYE4g2O</a></a>
-</p>— Node.js (@nodejs) <a href="https://twitter.com/nodejs/status/1814323839708656060?ref_src=twsrc%5Etfw">July 19, 2024</a></p></blockquote>
-<p>バグが修正され、v22.5.1がリリースされた。</p> </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
-Copyright © 2024  <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
-ダーシノ(@bc_rikko)
-</a> </small> </p> </footer> </body></html>
+    <h2 id="追記2024-07-19">追記:2024-07-19</h2>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <blockquote class="twitter-tweet">
+      <p>
+      <p lang="en" dir="ltr">⚠️ We’re encouraging all users to temporarily downgrade to Node.js v22.4.1 due to a bug in
+        v22.5.0.<br /><br />Full details here: <a href="https://t.co/N0UFoLqoak"><a
+            href="https://t.co/N0UFoLqoak">https://t.co/N0UFoLqoak</a></a>
+      </p>— Node.js (@nodejs) <a href="https://twitter.com/nodejs/status/1814112932650701195?ref_src=twsrc%5Etfw">July
+        19, 2024</a></p>
+    </blockquote>
+    <p><code>fs.closeSync()</code>の変更によりバグってアプリケーションが動かなくなる可能性が高いため、v22.4 にダウングレードを推奨するとのこと。</p>
+    <h2 id="追記2024-07-20">追記:2024-07-20</h2>
+    <blockquote class="twitter-tweet">
+      <p>
+      <p lang="en" dir="ltr">Node.js 22.5.1 is now released and reverts the commit that caused the regression in 22.5.0.
+        <br /><br />Details: <a href="https://t.co/CqkVE0RzzW"><a
+            href="https://t.co/CqkVE0RzzW">https://t.co/CqkVE0RzzW</a></a> <a href="https://t.co/KEpFYE4g2O"><a
+            href="https://t.co/KEpFYE4g2O">https://t.co/KEpFYE4g2O</a></a>
+      </p>— Node.js (@nodejs) <a href="https://twitter.com/nodejs/status/1814323839708656060?ref_src=twsrc%5Etfw">July
+        19, 2024</a></p>
+    </blockquote>
+    <p>バグが修正され、v22.5.1がリリースされた。</p>
+  </main>
+  <footer data-astro-cid-sckkx6r4>
+    <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
+        Copyright © 2024 <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
+          ダーシノ(@bc_rikko)
+        </a> </small> </p>
+  </footer>
+</body>
+
+</html>

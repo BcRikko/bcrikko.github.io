@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-sckkx6r4> <head><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-1276308583388146"><meta name="author" content="ダーシノ(B.C.Rikko)"><meta name="description" content="dialog要素を表示したときに、ブラウザのデフォルトの挙動でフォーカスが当たる場所が微妙なので考えてみる。"><meta name="keywords" content="HTML"><meta name="generator" content="Astro"><meta name="theme-color" content="#fafafa"><meta name="color-scheme" content="only light"><meta property="og:type" content="article"><meta property="og:title" content="dialog要素のどこにフォーカスを当てればよいか考える | ダーシノ(B.C.Rikko)"><meta property="og:description" content="dialog要素を表示したときに、ブラウザのデフォルトの挙動でフォーカスが当たる場所が微妙なので考えてみる。"><meta property="og:image" content="https://bcrikko.github.io/bcrikko.png"><meta property="og:url" content="https://bcrikko.github.io/posts/2024-06-12/dialog-focus/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"><title>dialog要素のどこにフォーカスを当てればよいか考える</title><style>.tags[data-astro-cid-3ef6ksr2]{font-size:.8rem;display:flex;flex-wrap:wrap;gap:2em;>div{display:flex;gap:.5em}dt:after{content:":"}dd{margin:0}}
+html{font-family:Noto Sans JP,sans-serif;font-size:1.25rem;line-height:1.7;letter-spacing:.05em;color:#333;background-color:#fafafa}:where(header,footer,main){max-width:40ic;margin-inline:auto}p{word-break:auto-phrase}dt{font-weight:800}pre{padding:1em;font-size:.8rem;line-height:1.4}code{font-style:italic;padding:0 .2em;background-color:#eee}pre>code{font-family:Menlo,Monaco,Courier New,monospace;font-style:initial;padding:initial;background-color:initial}blockquote{margin:2em 0;padding:.2em 1em;border-left:8px solid #CACACA;background-color:#eee}a{word-break:break-word}table{width:100%;overflow-x:auto}tr:nth-child(2n){background-color:#eee}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:space-between}footer[data-astro-cid-sckkx6r4]{text-align:center}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <a href="" data-astro-cid-sckkx6r4>≪ Today I learned.</a> <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
+RSS購読
+</a> </header> <main data-astro-cid-sckkx6r4> <hgroup data-astro-cid-3ef6ksr2> <dl class="tags" data-astro-cid-3ef6ksr2> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>公開日</dt> <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-06-12</time></dd> </div>  <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>タグ</dt> <dd data-astro-cid-3ef6ksr2>HTML</dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>著者</dt> <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
+ダーシノ(@bc_rikko)
+</a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a></div><a data-astro-cid-3ef6ksr2></a></dl><a data-astro-cid-3ef6ksr2> <h1 data-astro-cid-3ef6ksr2>dialog要素のどこにフォーカスを当てればよいか考える</h1> </a></hgroup> 
+<p>dialog要素を表示したときに、ブラウザのデフォルトの挙動でフォーカスが当たる場所が微妙なので考えてみる。</p>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li>dialog要素内でフォームコントロールを置くのは良くない
+<ul>
+<li>フォームを使う場合は別途ページを作る</li>
+</ul>
+</li>
+<li>dialog要素は メッセージ + OK/Cancel 程度の確認ダイアログ用途に留める
+<ul>
+<li>少量のメッセージであれば、そのままPrimaryボタン（閉じる）にフォーカスを当てる</li>
+<li>破壊的変更の確認ダイアログの場合は、Secondaryボタン（キャンセル）にフォーカスを当てる</li>
+</ul>
+</li>
+<li>どうしてもdialog要素に大きなコンテンツを含める必要がある場合は、タイトルや最初の文章にフォーカスを当てる</li>
+</ul>
+<h2 id="dialog要素は用法用量を守って正しく使う">dialog要素は用法用量を守って正しく使う</h2>
+<blockquote>
+<p>As with all HTML elements, it is not conforming to use the dialog element when attempting to represent another type of control. For example, context menus, tooltips, and popup listboxes are not dialog boxes, so abusing the dialog element to implement these patterns is incorrect.
+<a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element</a></p>
+</blockquote>
+<p>dialog要素をコンテキストメニューやツールチップなどに使ってはいけない。</p>
+<h2 id="dialog要素自体にtabindex属性を付与しない">dialog要素自体にtabindex属性を付与しない</h2>
+<blockquote>
+<p><code>&lt;dialog&gt;</code> element as it is not interactive and does not receive focus
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#usage_notes">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#usage_notes</a></p>
+</blockquote>
+<p>dialog要素はインタラクティブでないし、フォーカスを受け取らないために dialog要素にtabindex属性を付与してはならない。</p>
+<h2 id="autofocus属性はすぐにユーザーが操作するような場合に使う">autofocus属性はすぐにユーザーが操作するような場合に使う</h2>
+<blockquote>
+<p>The autofocus attribute <strong>should be added to the element the user is expected to interact with immediately</strong> upon opening a modal dialog. If no other element involves more immediate interaction, it is recommended to add autofocus to the close button inside the dialog, or the dialog itself if the user is expected to click/activate it to dismiss.</p>
+</blockquote>
+<p>dialogを表示してすぐ操作すると思われる場所に autofocus属性 を付与する。すぐ操作する要素がなければ閉じるボタンにautofocus属性を付与する。（推奨）</p>
+<h2 id="autofocus属性にはアクセシビリティに関する懸念がある">autofocus属性にはアクセシビリティに関する懸念がある</h2>
+<blockquote>
+<p>Automatically focusing a form control can confuse visually-impaired people using screen-reading technology and people with cognitive impairments.
+When autofocus is assigned, screen-readers “teleport” their user to the form control without warning them beforehand.
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_concerns">https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_concerns</a></p>
+</blockquote>
+<blockquote>
+<p>Automatically focusing on a control can cause the page to scroll on load.</p>
+</blockquote>
+<p>スクロールが発生するほど長いコンテンツを持った dialog要素の場合、autofocusがあると読み込んだときにスクロールが発生する。（テレポートする）</p>
+<blockquote>
+<p>The focus can also cause dynamic keyboards to display on some touch devices.</p>
+</blockquote>
+<p>フォームコントロールにフォーカスが当たるとdialog要素を表示したタイミングでソフトウェアキーボードが表示される。</p>
+<blockquote>
+<p>While a screen reader will announce the label of the form control receiving focus, the screen reader will not announce anything before the label, and the sighted user on a small device will equally miss the context created by the preceding content.</p>
+</blockquote>
+<p>スクリーンリーダーはフォーカスがあるコントロールのラベルを読み上げるため、ウィンドウサイズが小さいデバイスを使っているとコンテンツを見逃してしまう。</p>
+<blockquote>
+<p>If content is large enough that focusing the first interactive element could cause the beginning of content to scroll out of view, it is advisable to add tabindex=“-1” to a static element at the top of the dialog, such as the dialog title or first paragraph, and initially focus that element.
+<a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/</a></p>
+</blockquote>
+<p>大きなコンテンツを含む場合は、スクロールされて文章を見逃してしまう可能性があるため、ダイアログのタイトルや最初の文章にフォーカスを当てる。</p> </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
+Copyright © 2024  <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
+ダーシノ(@bc_rikko)
+</a> </small> </p> </footer> </body></html>

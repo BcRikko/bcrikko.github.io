@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-sckkx6r4> <head><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-1276308583388146"><meta name="author" content="ダーシノ(B.C.Rikko)"><meta name="description" content="margin-block/margin-inlineはLogical Properties（論理プロパティ）と呼ばれ、ブロックの先頭、インラインの末尾のような意味的な場所に対応している。 そのため、writing-modeがvertical-lrでもvertical-rlでも使える。"><meta name="keywords" content="CSS"><meta name="generator" content="Astro"><meta name="theme-color" content="#fafafa"><meta name="color-scheme" content="only light"><meta property="og:type" content="article"><meta property="og:title" content="CSS Logical Propertiesで中央揃え | ダーシノ(B.C.Rikko)"><meta property="og:description" content="margin-block/margin-inlineはLogical Properties（論理プロパティ）と呼ばれ、ブロックの先頭、インラインの末尾のような意味的な場所に対応している。 そのため、writing-modeがvertical-lrでもvertical-rlでも使える。"><meta property="og:image" content="https://bcrikko.github.io/bcrikko.png"><meta property="og:url" content="https://bcrikko.github.io/posts/2024-05-14/css-logical-properties/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"><title>CSS Logical Propertiesで中央揃え</title><style>.tags[data-astro-cid-3ef6ksr2]{font-size:.8rem;display:flex;flex-wrap:wrap;gap:2em;>div{display:flex;gap:.5em}dt:after{content:":"}dd{margin:0}}
+html{font-family:Noto Sans JP,sans-serif;font-size:1.25rem;line-height:1.7;letter-spacing:.05em;color:#333;background-color:#fafafa}:where(header,footer,main){max-width:40ic;margin-inline:auto}p{word-break:auto-phrase}dt{font-weight:800}pre{padding:1em;font-size:.8rem;line-height:1.4}code{font-style:italic;padding:0 .2em;background-color:#eee}pre>code{font-family:Menlo,Monaco,Courier New,monospace;font-style:initial;padding:initial;background-color:initial}blockquote{margin:2em 0;padding:.2em 1em;border-left:8px solid #CACACA;background-color:#eee}a{word-break:break-word}table{width:100%;overflow-x:auto}tr:nth-child(2n){background-color:#eee}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:space-between}footer[data-astro-cid-sckkx6r4]{text-align:center}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <a href="" data-astro-cid-sckkx6r4>≪ Today I learned.</a> <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
+RSS購読
+</a> </header> <main data-astro-cid-sckkx6r4> <hgroup data-astro-cid-3ef6ksr2> <dl class="tags" data-astro-cid-3ef6ksr2> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>公開日</dt> <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-05-14</time></dd> </div>  <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>タグ</dt> <dd data-astro-cid-3ef6ksr2>CSS</dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>著者</dt> <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
+ダーシノ(@bc_rikko)
+</a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a></div><a data-astro-cid-3ef6ksr2></a></dl><a data-astro-cid-3ef6ksr2> <h1 data-astro-cid-3ef6ksr2>CSS Logical Propertiesで中央揃え</h1> </a></hgroup> 
+<p><code>margin-top</code>/<code>margin-left</code>はPhysical Properties（物理プロパティ）と呼ばれ、物理的に上、右のような場所に対応している。</p>
+<p>対して、<code>margin-block</code>/<code>margin-inline</code>は<a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_logical_properties_and_values">Logical Properties（論理プロパティ）</a>と呼ばれ、ブロックの先頭、インラインの末尾のような意味的な場所に対応している。
+そのため、<code>writing-mode</code>が<code>vertical-lr</code>でも<code>vertical-rl</code>でも使える。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span>                         margin-top</span></span>
+<span class="line"><span>                    +------------------+</span></span>
+<span class="line"><span>        margin-left |                  | margin-right</span></span>
+<span class="line"><span>                    +------------------+</span></span>
+<span class="line"><span>                        margin-bottom</span></span>
+<span class="line"><span>                            ↓↓↓</span></span>
+<span class="line"><span>                     margin-block-start</span></span>
+<span class="line"><span>                    +------------------+</span></span>
+<span class="line"><span>margin-inline-start |                  | margin-inline-end</span></span>
+<span class="line"><span>                    +------------------+</span></span>
+<span class="line"><span>                      margin-block-end</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>といっても複数の<code>writing-mode</code>なんてなかなかサポートしないので別の使い方を考える。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#6A737D">/* Before */</span></span>
+<span class="line"><span style="color:#85E89D">article</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  margin</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#79B8FF"> auto</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* pafter */</span></span>
+<span class="line"><span style="color:#85E89D">article</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  margin-inline</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">auto</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li><code>margin-block</code> = <code>margin-top</code> + <code>margin-bottom</code></li>
+<li><code>margin-inline</code> = <code>margin-left</code> + <code>margin-right</code></li>
+<li>よって、<code>margin-inline: auto</code>は<code>margin-left: auto</code> + <code>margin-right: auto</code>と同じ</li>
+</ul> </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
+Copyright © 2024  <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
+ダーシノ(@bc_rikko)
+</a> </small> </p> </footer> </body></html>

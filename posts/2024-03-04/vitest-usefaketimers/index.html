@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-sckkx6r4> <head><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-1276308583388146"><meta name="author" content="ダーシノ(B.C.Rikko)"><meta name="description" content="useFakeTimersを使うと`Error: Test timed out in 5000ms.」となる。"><meta name="keywords" content="JavaScript"><meta name="generator" content="Astro"><meta name="theme-color" content="#fafafa"><meta name="color-scheme" content="only light"><meta property="og:type" content="article"><meta property="og:title" content="Vitest（jest）でuseFakeTimers()を使うとPromiseが動かなくなる  | ダーシノ(B.C.Rikko)"><meta property="og:description" content="useFakeTimersを使うと`Error: Test timed out in 5000ms.」となる。"><meta property="og:image" content="https://bcrikko.github.io/bcrikko.png"><meta property="og:url" content="https://bcrikko.github.io/posts/2024-03-04/vitest-usefaketimers/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet"><title>Vitest（jest）でuseFakeTimers()を使うとPromiseが動かなくなる </title><style>.tags[data-astro-cid-3ef6ksr2]{font-size:.8rem;display:flex;flex-wrap:wrap;gap:2em;>div{display:flex;gap:.5em}dt:after{content:":"}dd{margin:0}}
+html{font-family:Noto Sans JP,sans-serif;font-size:1.25rem;line-height:1.7;letter-spacing:.05em;color:#333;background-color:#fafafa}:where(header,footer,main){max-width:40ic;margin-inline:auto}p{word-break:auto-phrase}dt{font-weight:800}pre{padding:1em;font-size:.8rem;line-height:1.4}code{font-style:italic;padding:0 .2em;background-color:#eee}pre>code{font-family:Menlo,Monaco,Courier New,monospace;font-style:initial;padding:initial;background-color:initial}blockquote{margin:2em 0;padding:.2em 1em;border-left:8px solid #CACACA;background-color:#eee}a{word-break:break-word}table{width:100%;overflow-x:auto}tr:nth-child(2n){background-color:#eee}header[data-astro-cid-sckkx6r4]{display:flex;justify-content:space-between}footer[data-astro-cid-sckkx6r4]{text-align:center}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <a href="" data-astro-cid-sckkx6r4>≪ Today I learned.</a> <a href="/rss" target="_blank" aria-label="RSSフィードを購読する" data-astro-cid-sckkx6r4>
+RSS購読
+</a> </header> <main data-astro-cid-sckkx6r4> <hgroup data-astro-cid-3ef6ksr2> <dl class="tags" data-astro-cid-3ef6ksr2> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>公開日</dt> <dd data-astro-cid-3ef6ksr2><time data-astro-cid-3ef6ksr2>2024-03-04</time></dd> </div>  <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>タグ</dt> <dd data-astro-cid-3ef6ksr2>JavaScript</dd> </div> <div data-astro-cid-3ef6ksr2> <dt data-astro-cid-3ef6ksr2>著者</dt> <dd data-astro-cid-3ef6ksr2> <a href="/aboutme" data-astro-cid-3ef6ksr2>
+ダーシノ(@bc_rikko)
+</a><a data-astro-cid-3ef6ksr2></a></dd><a data-astro-cid-3ef6ksr2></a></div><a data-astro-cid-3ef6ksr2></a></dl><a data-astro-cid-3ef6ksr2> <h1 data-astro-cid-3ef6ksr2>Vitest（jest）でuseFakeTimers()を使うとPromiseが動かなくなる </h1> </a></hgroup> 
+<p>以下のコードを実行すると`Error: Test timed out in 5000ms.」となる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">vi.</span><span style="color:#B392F0">useFakeTimers</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">await</span><span style="color:#B392F0"> waitFor</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  ...</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"></span></code></pre>
+<h2 id="解決策-advancetimersを設定する">解決策: <code>advanceTimers</code>を設定する</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// xxx.spec.ts</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> user</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> userEvent.</span><span style="color:#B392F0">setup</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  advanceTimers: vi.advanceTimersByTime  </span><span style="color:#6A737D">// userEventにtimerをセット</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ワークアラウンド!!</span></span>
+<span class="line"><span style="color:#6A737D">  // https://github.com/testing-library/user-event/issues/1115</span></span>
+<span class="line"><span style="color:#E1E4E8">  (globalThis </span><span style="color:#F97583">as</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">).jest </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    advanceTimersByTime: vi.advanceTimersByTime.</span><span style="color:#B392F0">bind</span><span style="color:#E1E4E8">(vi)</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  vi.</span><span style="color:#B392F0">useFakeTimers</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">  vi.</span><span style="color:#B392F0">setSystemTime</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;2024-01-01T00:00:00&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#B392F0">afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  vi.</span><span style="color:#B392F0">useRealTimers</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;xxxx&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#E1E4E8"> user.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">)  </span><span style="color:#6A737D">// userEventの代わりに最初にsetupしたものを使う</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#B392F0"> waitFor</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"></span></code></pre> </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4> <small data-astro-cid-sckkx6r4>
+Copyright © 2024  <a href="https://x.com/bc_rikko" target="_blank" data-astro-cid-sckkx6r4>
+ダーシノ(@bc_rikko)
+</a> </small> </p> </footer> </body></html>
